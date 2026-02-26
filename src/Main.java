@@ -61,45 +61,32 @@ public class PalindromeCheckerApp
  * @author Developer
  * @version 4.0
  */
-public class UseCase4PalindromeCheckerApp {
+public class UseCase4PalindromeCheckerApp public static void main(String[] args) {
 
-    /**
-     * Application entry point for UC4.
-     * @param args Command-line arguments
-     */
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+    // Declare and initialize input string
+    String input = "noon";
 
-        System.out.print("Enter a string: ");
-        String input = scanner.nextLine();
+    // Create stack to store characters
+    java.util.Stack<Character> stack = new java.util.Stack<>();
 
-        // Step 1: Convert string to char array
-        char[] charArray = input.toLowerCase().toCharArray();
-
-        // Step 2: Initialize two pointers
-        int start = 0;
-        int end = charArray.length - 1;
-        boolean isPalindrome = true;
-
-        // Step 3: Compare characters using two-pointer technique
-        while (start < end) {
-            if (charArray[start] != charArray[end]) {
-                isPalindrome = false;
-                break; // Exit early if a mismatch is found
-            }
-            start++; // Move forward
-            end--;   // Move backward
-        }
-
-        // Step 4: Display the result
-        if (isPalindrome) {
-            System.out.println("The string \"" + input + "\" is a palindrome.");
-        } else {
-            System.out.println("The string \"" + input + "\" is NOT a palindrome.");
-        }
-
-        scanner.close();
+    // Push each character into stack
+    for (char c : input.toCharArray()) {
+        stack.push(c);
     }
+
+    // Assume palindrome initially
+    boolean isPalindrome = true;
+
+    // Compare by popping from stack
+    for (char c : input.toCharArray()) {
+        if (c != stack.pop()) {
+            isPalindrome = false;
+            break;
+        }
+    }
+
+    System.out.println("Input : " + input);
+    System.out.println("Is Palindrome? : " + isPalindrome);
 }
 /**
  * ============================================
